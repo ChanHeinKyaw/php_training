@@ -17,9 +17,9 @@
 
 <?php
 	$num = 6;
-	for ($col = 1; $col <= $num; $col++) {
-		for ($row = 1; $row <= (2 * $num) - 1; $row++) {
-			if ($row >= $num - ($col - 1) && $row <= $num + ($col - 1)) {
+	for ($row = 1; $row <= $num; $row++) {
+		for ($col = 1; $col <= (2 * $num) - 1; $col++) {
+			if ($col >= $num - ($row - 1) && $col <= $num + ($row - 1)) {
 				echo "*";
 			}else {
 				echo "&nbsp;&nbsp;";
@@ -27,9 +27,9 @@
 		}
 		echo "<br>";
 	}
-	for ($col = $num - 1; $col >= 1; $col--) {
-		for ($row = 1; $row <= (2 * $num) - 1; $row++) {
-			if ($row >= $num - ($col - 1) && $row <= $num + ($col - 1)) {
+	for ($row = $num - 1; $row >= 1; $row--) {
+		for ($col = 1; $col <= (2 * $num) - 1; $col++) {
+			if ($col >= $num - ($row - 1) && $col <= $num + ($row - 1)) {
 				echo "*";
 			} else {
 				echo "&nbsp;&nbsp;";
