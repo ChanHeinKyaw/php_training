@@ -58,7 +58,7 @@ $sections = $phpWord->getSections();
 $section = $sections[0];
 $arrays = $section->getElements();
 
-foreach($arrays as $value){
+foreach($arrays as $key => $value){
     print_r($value->getElements()[0]->getText());
 }
 
