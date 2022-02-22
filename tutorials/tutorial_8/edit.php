@@ -6,19 +6,17 @@
   $nameError = "";
   $emailError = "";
   $phoneError = "";
-  $passwordError = "";
   $addressError = "";
   
   if(isset($_GET['userId'])){
     $user_id = $_GET['userId'];
 
-    $user = mysqli_query($db,"SELECT * FROM user_crud.users WHERE id=$user_id");
+    $user = mysqli_query($db,"SELECT * FROM users WHERE id=$user_id");
     if(mysqli_num_rows($user) == 1){
       foreach($user as $data){
         $name = $data['name'];
         $email = $data['email'];
         $phone = $data['phone'];
-        $password = $data['password'];
         $address = $data['address'];
       }
     }
@@ -30,10 +28,8 @@
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
-    $password = $_POST["password"];
     $address = $_POST["address"];
 
-    $hash_password = md5($password);
 
     if(empty($name)){
       $nameError = "The name field is required.";
@@ -47,18 +43,14 @@
       $phoneError = "The phone field is required.";
     }
 
-    if(empty($password)){
-      $passwordError = "The password field is required.";
-    }
-
     if(empty($address)){
       $addressError = "The address field is required.";
     }
 
-    if(!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)){
-      $query = "UPDATE user_crud.users SET name='$name',email='$email',phone=$phone,password='$hash_password',address='$address' WHERE id=$user_id";
-      $_SESSION['successMsg'] = "User Successfully Updated";
+    if(!empty($name) && !empty($email) && !empty($phone) && !empty($address)){
+      $query = "UPDATE users SET name='$name',email='$email',phone=$phone,address='$address' WHERE id=$user_id";
       mysqli_query($db,$query);
+      $_SESSION['successMsg'] = "User Successfully Updated";
       header("Location:index.php");
     }
   }
@@ -91,9 +83,6 @@
         
         <input type="number" name="phone" placeholder="Phone" value="<?php echo $phone; ?>">
         <span style="color: red;"><?php echo $phoneError ?></span><br><br>
-
-        <input type="password" name="password" placeholder="Password" value="<?php echo $password; ?>">
-        <span style="color: red;"><?php echo $passwordError ?></span><br><br>
         
         <textarea name="address" placeholder="Address....." rows="5"><?php echo $address; ?></textarea>
         <span style="color: red;"><?php echo $addressError ?></span>

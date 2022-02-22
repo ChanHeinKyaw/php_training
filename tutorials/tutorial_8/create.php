@@ -44,9 +44,9 @@
     }
 
     if(!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)){
-      $query = "INSERT INTO user_crud.users(name,email,phone,password,address) VALUES ('$name','$email','$phone','$hash_password','$address')";
-      $_SESSION['successMsg'] = "User Successfully Created";
+      $query = "INSERT INTO users(name,email,phone,password,address) VALUES ('$name','$email','$phone','$hash_password','$address')";
       mysqli_query($db,$query);
+      $_SESSION['successMsg'] = "User Successfully Created";
       header("Location:index.php");
     }
   }

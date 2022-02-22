@@ -36,7 +36,7 @@
     <tbody>
       <?php
         require "connect.php";
-        $query = "SELECT * FROM user_crud.users";
+        $query = "SELECT * FROM users";
 
         $users = mysqli_query($db,$query);
         foreach($users as $user){
