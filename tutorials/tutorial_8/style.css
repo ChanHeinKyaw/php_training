@@ -1,0 +1,138 @@
+.clearfix:after {
+  display: block;
+  clear: both;
+  height: 0px;
+  visibility: hidden;
+  font-size: 0px;
+  content: "";
+}
+
+table{
+  border: 1px solid #DDDDDD;
+  margin: 10px auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+table th{
+  border: 1px solid #DDDDDD;
+  padding: 10px 30px;
+  font-size: 16px;
+}
+
+table tr td{
+  border: 1px solid #DDDDDD;
+  text-align: center;
+  padding: 10px 30px;
+  font-size: 14px;
+}
+
+table tr td a{
+  text-decoration: none;
+  background-color: #4CD195;
+  padding: 2px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+table tr td a:hover{
+  color: #0000ff;
+}
+
+.user-info{
+  width: 80%;
+  margin: 10px auto;
+}
+
+.user-info h2{
+  margin: 0;
+  float: left;
+}
+
+.user-info a{
+  text-decoration: none;
+  color: #fff;
+  background-color: #4CD195;
+  padding: 5px 10px;
+  border-radius: 5px;
+  float: right;
+}
+
+.user-info a:hover{
+  opacity: 50%;
+}
+
+.card {
+  background-color: #DDDDDD;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px 20px;
+  color: #000080;
+  border-radius: 10px;
+}
+
+.card h3{
+  font-size: 22px;
+}
+
+.card input{
+  width: 95%;
+  outline: none;
+  padding: 10px 5px;
+  border: none;
+  color: #000080;
+}
+
+.card textarea{
+  width: 95%;
+  outline: none;
+  padding: 10px 5px;
+  border: none;
+  color: #000080;
+}
+
+
+.user-create{
+  width: 97%;
+  margin: 20px auto;
+}
+
+.user-create h2{
+  margin: 0;
+  float: left;
+}
+
+.user-create a{
+  text-decoration: none;
+  color: #fff;
+  background-color: #4CD195;
+  padding: 5px 10px;
+  border-radius: 5px;
+  float: right;
+}
+
+.user-create a:hover{
+  opacity: 50%;
+}
+
+.card button{
+  width: 97%;
+  padding: 10px 15px;
+  margin-top: 20px;
+  background: #4CD195;
+  border: none;
+  color: #fff;
+}
+
+.card button:hover{
+  opacity: 50%;
+}
+
+.alert-msg {
+  background: #4CD195;
+  color: #fff;
+  padding: 10px;
+  width: 78%;
+  margin: 0 auto;
+}
