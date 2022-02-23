@@ -11,7 +11,7 @@ table{
   border: 1px solid #DDDDDD;
   margin: 10px auto;
   border-collapse: collapse;
-  width: 80%;
+  width: 95%;
 }
 
 table th{
@@ -40,7 +40,7 @@ table tr td a:hover{
 }
 
 .user-info{
-  width: 80%;
+  width: 95%;
   margin: 10px auto;
 }
 
@@ -92,6 +92,13 @@ table tr td a:hover{
   color: #000080;
 }
 
+.card select{
+  width: 96.5%;
+  outline: none;
+  padding: 10px 5px;
+  border: none;
+  color: #000080;
+}
 
 .user-create{
   width: 97%;
@@ -133,6 +140,6 @@ table tr td a:hover{
   background: #4CD195;
   color: #fff;
   padding: 10px;
-  width: 78%;
+  width: 93%;
   margin: 0 auto;
 }

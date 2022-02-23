@@ -6,6 +6,7 @@
   $nameError = "";
   $emailError = "";
   $phoneError = "";
+  $monthError = "";
   $addressError = "";
   
   if(isset($_GET['userId'])){
@@ -17,6 +18,7 @@
         $name = $data['name'];
         $email = $data['email'];
         $phone = $data['phone'];
+        $month = $data['month'];
         $address = $data['address'];
       }
     }
@@ -28,6 +30,7 @@
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
+    $month = $_POST["month"];
     $address = $_POST["address"];
 
 
@@ -43,12 +46,16 @@
       $phoneError = "The phone field is required.";
     }
 
+    if(empty($month)){
+      $monthError = "The Month field is required.";
+    }
+
     if(empty($address)){
       $addressError = "The address field is required.";
     }
 
     if(!empty($name) && !empty($email) && !empty($phone) && !empty($address)){
-      $query = "UPDATE users SET name='$name',email='$email',phone=$phone,address='$address' WHERE id=$user_id";
+      $query = "UPDATE users SET name='$name',email='$email',phone=$phone,month='$month',address='$address' WHERE id=$user_id";
       mysqli_query($db,$query);
       $_SESSION['successMsg'] = "User Successfully Updated";
       header("Location:index.php");
@@ -84,6 +91,47 @@
         <input type="number" name="phone" placeholder="Phone" value="<?php echo $phone; ?>">
         <span style="color: red;"><?php echo $phoneError ?></span><br><br>
         
+        <select name="month">
+          <option value="">Select Month</option>  
+          <option value="jan"
+          <?php echo $month == 'jan' ? 'selected' : '' ?>
+          >JAN</option>
+          <option value="feb"
+          <?php echo $month == 'feb' ? 'selected' : '' ?>
+          >FEB</option>
+          <option value="mar"
+          <?php echo $month == 'mar' ? 'selected' : '' ?>
+          >MAR</option>
+          <option value="apr"
+          <?php echo $month == 'apr' ? 'selected' : '' ?>
+          >APR</option>
+          <option value="may"
+          <?php echo $month == 'may' ? 'selected' : '' ?>
+          >MAY</option>
+          <option value="jun"
+          <?php echo $month == 'jun' ? 'selected' : '' ?>
+          >JUN</option>
+          <option value="jul"
+          <?php echo $month == 'jul' ? 'selected' : '' ?>
+          >JUL</option>
+          <option value="aug"
+          <?php echo $month == 'aug' ? 'selected' : '' ?>
+          >AUG</option>
+          <option value="sep"
+          <?php echo $month == 'sep' ? 'selected' : '' ?>
+          >SEP</option>
+          <option value="oct"
+          <?php echo $month == 'oct' ? 'selected' : '' ?>
+          >OCT</option>
+          <option value="nov"
+          <?php echo $month == 'nov' ? 'selected' : '' ?>
+          >NOV</option>
+          <option value="dec"
+          <?php echo $month == 'dec' ? 'selected' : '' ?>
+          >DEC</option>
+        </select>
+        <span style="color: red;"><?php echo $monthError ?></span><br><br>
+
         <textarea name="address" placeholder="Address....." rows="5"><?php echo $address; ?></textarea>
         <span style="color: red;"><?php echo $addressError ?></span>
         
