@@ -4,4 +4,3 @@
   if($db == false){
     echo "Database Connection Fail!";
   }
-?>

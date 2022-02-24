@@ -7,27 +7,27 @@
   content: "";
 }
 
-table{
+table {
   border: 1px solid #DDDDDD;
   margin: 10px auto;
   border-collapse: collapse;
   width: 95%;
 }
 
-table th{
+table th {
   border: 1px solid #DDDDDD;
   padding: 10px 30px;
   font-size: 16px;
 }
 
-table tr td{
+table tr td {
   border: 1px solid #DDDDDD;
   text-align: center;
   padding: 10px 30px;
   font-size: 14px;
 }
 
-table tr td a{
+table tr td a {
   text-decoration: none;
   background-color: #4CD195;
   padding: 2px 10px;
@@ -35,21 +35,21 @@ table tr td a{
   color: #fff;
 }
 
-table tr td a:hover{
+table tr td a:hover {
   color: #0000ff;
 }
 
-.user-info{
+.user-info {
   width: 95%;
   margin: 10px auto;
 }
 
-.user-info h2{
+.user-info h2 {
   margin: 0;
   float: left;
 }
 
-.user-info a{
+.user-info a {
   text-decoration: none;
   color: #fff;
   background-color: #4CD195;
@@ -58,7 +58,7 @@ table tr td a:hover{
   float: right;
 }
 
-.user-info a:hover{
+.user-info a:hover {
   opacity: 50%;
 }
 
@@ -72,11 +72,11 @@ table tr td a:hover{
   border-radius: 10px;
 }
 
-.card h3{
+.card h3 {
   font-size: 22px;
 }
 
-.card input{
+.card input {
   width: 95%;
   outline: none;
   padding: 10px 5px;
@@ -84,7 +84,7 @@ table tr td a:hover{
   color: #000080;
 }
 
-.card textarea{
+.card textarea {
   width: 95%;
   outline: none;
   padding: 10px 5px;
@@ -92,7 +92,7 @@ table tr td a:hover{
   color: #000080;
 }
 
-.card select{
+.card select {
   width: 96.5%;
   outline: none;
   padding: 10px 5px;
@@ -100,17 +100,17 @@ table tr td a:hover{
   color: #000080;
 }
 
-.user-create{
+.user-create {
   width: 97%;
   margin: 20px auto;
 }
 
-.user-create h2{
+.user-create h2 {
   margin: 0;
   float: left;
 }
 
-.user-create a{
+.user-create a {
   text-decoration: none;
   color: #fff;
   background-color: #4CD195;
@@ -119,11 +119,11 @@ table tr td a:hover{
   float: right;
 }
 
-.user-create a:hover{
+.user-create a:hover {
   opacity: 50%;
 }
 
-.card button{
+.card button {
   width: 97%;
   padding: 10px 15px;
   margin-top: 20px;
@@ -132,7 +132,7 @@ table tr td a:hover{
   color: #fff;
 }
 
-.card button:hover{
+.card button:hover {
   opacity: 50%;
 }
 
