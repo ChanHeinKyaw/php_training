@@ -1,6 +1,6 @@
 <?php
-  $db = mysqli_connect("localhost","root","password","user_crud");
+$db = mysqli_connect("localhost", "root", "password", "user_crud");
 
-  if($db == false){
-    echo "Database Connection Fail!";
-  }
+if ($db == false) {
+	echo "Database Connection Fail!";
+}

@@ -1,5 +1,5 @@
 <?php
-    include "connect.php";
+include "connect.php";
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
 
@@ -7,7 +7,7 @@ if (isset($_GET['code'])) {
         die('Could not connect to the database');
     }
 
-    $verifyQuery = $db->query("SELECT * FROM users WHERE code = '$code' and updated_at >= NOW() - INTERVAL 1 DAY" );
+    $verifyQuery = $db->query("SELECT * FROM users WHERE code = '$code' and updated_at >= NOW() - INTERVAL 1 DAY");
 
     if ($verifyQuery->num_rows == 0) {
         header("Location: login.php");
@@ -25,7 +25,6 @@ if (isset($_GET['code'])) {
         if ($changeQuery) {
             header("Location: success.html");
         }
-
     }
     $db->close();
 } else {
