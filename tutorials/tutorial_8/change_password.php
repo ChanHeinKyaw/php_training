@@ -1,13 +1,13 @@
 <?php
+    include "connect.php";
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
 
-    $conn = new mySqli('localhost', 'root', 'password', 'user_crud');
-    if ($conn->connect_error) {
+    if ($db->connect_error) {
         die('Could not connect to the database');
     }
 
-    $verifyQuery = $conn->query("SELECT * FROM users WHERE code = '$code'");
+    $verifyQuery = $db->query("SELECT * FROM users WHERE code = '$code' and updated_at >= NOW() - INTERVAL 1 DAY" );
 
     if ($verifyQuery->num_rows == 0) {
         header("Location: login.php");
@@ -20,14 +20,14 @@ if (isset($_GET['code'])) {
 
         $hash_password = md5($new_password);
 
-        $changeQuery = $conn->query("UPDATE users SET password = '$hash_password' WHERE email = '$email' and code = '$code'");
+        $changeQuery = $db->query("UPDATE users SET password = '$hash_password' WHERE email = '$email' and code = '$code' and updated_at >= NOW() - INTERVAL 1 DAY");
 
         if ($changeQuery) {
             header("Location: success.html");
         }
 
     }
-    $conn->close();
+    $db->close();
 } else {
     header("Location: login.php");
     exit();

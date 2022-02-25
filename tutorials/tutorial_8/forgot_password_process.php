@@ -1,4 +1,8 @@
 <?php
+
+    const reset_link = "http://localhost/tutorials/tutorial_8/change_password.php";
+
+    include "connect.php";
     if(isset($_POST['reset'])) {
         $email = $_POST['email'];
     }
@@ -23,7 +27,7 @@
         $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
         $mail->Username   = 'your_email@gmail.com';                     // SMTP username
-        $mail->Password   = 'your_email_password';                               // SMTP password
+        $mail->Password   = 'your_email';                               // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     
@@ -36,23 +40,23 @@
         // Content
         $mail->isHTML(true); 
         $mail->Subject = 'Password Reset';
-        $mail->Body    = 'To reset your password click <a href="http://localhost/tutorials/tutorial_8/change_password.php?code='.$code.'">here </a>. </br>Reset your password in a day.';
+        $mail->Body    = 'To reset your password click <a href="'.reset_link.'?code='.$code.'">here </a>. </br>Reset your password in a day.';
 
-        $conn = new mySqli('localhost', 'root', 'password', 'user_crud');
-
-        if($conn->connect_error) {
+        if($db->connect_error) {
             die('Could not connect to the database.');
         }
 
-        $verifyQuery = $conn->query("SELECT * FROM users WHERE email = '$email'");
+        $verifyQuery = $db->query("SELECT * FROM users WHERE email = '$email'");
+
+        $updated_at = date('Y-m-d H:m:s');
 
         if($verifyQuery->num_rows) {
-            $codeQuery = $conn->query("UPDATE users SET code = '$code' WHERE email = '$email'");
+            $codeQuery = $db->query("UPDATE users SET code = '$code', updated_at = '$updated_at' WHERE email = '$email'");
                 
             $mail->send();
             echo 'Message has been sent, check your email';
         }
-        $conn->close();
+        $db->close();
     
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

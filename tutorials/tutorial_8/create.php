@@ -50,8 +50,9 @@ if (isset($_POST["create-btn"])) {
 		$addressError = "The address field is required.";
 	}
 
+
 	if (!empty($name) && !empty($email) && !empty($phone) && !empty($password) && !empty($address)) {
-		$query = "INSERT INTO users(name,email,phone,password,address,month) VALUES ('$name','$email','$phone','$hash_password','$address','$month')";
+		$query = "INSERT INTO users(name,email,phone,password,address,month) VALUES ('$name','$email','$phone','$hash_password','$address')";
 		mysqli_query($db, $query);
 		$_SESSION['successMsg'] = "User Successfully Created";
 		header("Location:index.php");
