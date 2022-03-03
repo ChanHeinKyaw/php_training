@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Task;
 use App\Task;
 use App\Http\Requests\TaskRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Contracts\Services\Task\TaskServiceInterface;
 
 class TaskController extends Controller
@@ -17,8 +18,12 @@ class TaskController extends Controller
   }
 
     public function index(){
-        $tasks = $this->taskInterface->getTaskList();
-        return view('tasks', compact('tasks'));
+        if (Auth::check()) {
+            $tasks = $this->taskInterface->getTaskList();
+            return view('tasks', compact('tasks'));
+        } else {
+            return redirect("login")->withSuccess('Opps! You do not have access');
+        }
     }
 
     public function store(TaskRequest $request){
