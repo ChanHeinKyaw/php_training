@@ -4,29 +4,46 @@ namespace App\Dao\Task;
 
 use App\Task;
 use App\Contracts\Dao\Task\TaskDaoInterface;
-use Illuminate\Http\Request;
 
 class TaskDao implements TaskDaoInterface
 {
-  public function saveTask(Request $request)
-  {
-    $task = new Task();
-    $task->name = $request['name'];
-    $task->save();
-    return $task;
-  }
+    /**
+     * Create Task
+     * @param $request
+     * @return
+     */
+    public function saveTask($request)
+    {
+        $task = new Task();
+        $task->name = $request['name'];
+        $task->save();
+        return $task;
+    }
 
-  public function getTaskList()
-  {
-    $tasks = Task::all();
-    return $tasks;
-  }
+    /**
+     * Task List
+     * @param
+     * @return 
+     */
+    public function getTaskList()
+    {
+        $tasks = Task::all();
+        return $tasks;
+    }
 
-  public function deleteTaskById($id)
-  {
-    $task = Task::find($id);
-    $task->delete();
-    return 'Deleted Successfully!';
-  }
-
+    /**
+     * Delete Task By Id
+     * @param
+     * @return 
+     */
+    public function deleteTaskById($id)
+    {
+        $task = Task::find($id);
+        if (!$task) {
+            return redirect("/")->withSuccess('Oppes! No Found!');
+        } else {
+            $task->delete();
+            return 'Deleted Successfully!';
+        }
+    }
 }

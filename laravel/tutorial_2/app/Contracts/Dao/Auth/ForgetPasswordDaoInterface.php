@@ -6,7 +6,15 @@ namespace App\Contracts\Dao\Auth;
 
 interface ForgetPasswordDaoInterface
 {
-  public function saveForgetPassword($request);
+    /**
+     * Save Forget Password User And Email Sending
+     * @param $request
+     */
+    public function saveForgetPassword($request);
 
-  public function saveResetPassword($request);
+    /**
+     * Update Password
+     * @param $request
+     */
+    public function saveResetPassword($request);
 }

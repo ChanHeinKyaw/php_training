@@ -2,13 +2,23 @@
 
 namespace App\Contracts\Dao\Task;
 
-use Illuminate\Http\Request;
-
 interface TaskDaoInterface
 {
-  public function saveTask(Request $request);
+    /**
+     * Create Task
+     * @param $request
+     */
+    public function saveTask($request);
 
-  public function getTaskList();
+    /**
+     * Task List
+     * @param $request
+     */
+    public function getTaskList();
 
-  public function deleteTaskById($id);
+    /**
+     * Delete Task By Id
+     * @param $id
+     */
+    public function deleteTaskById($id);
 }

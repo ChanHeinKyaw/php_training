@@ -8,22 +8,28 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ForgetPasswordFormRequest;
+use App\Http\Requests\ResetPasswordFormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordController extends Controller
 {
+    /**
+     * View Forget Password Form
+     */
     public function showForgetPasswordForm()
     {
         return view('auth.forgetPassword');
     }
 
-    public function submitForgetPasswordForm(Request $request)
+    /**
+     * Submit Forget Password
+     * @param ForgetPasswordFormRequest $request
+     * @return Forget Password Form Page
+     */
+    public function submitForgetPasswordForm(ForgetPasswordFormRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
-
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
@@ -40,19 +46,23 @@ class ForgotPasswordController extends Controller
         return back()->with('message', 'We have e-mailed your password reset link!');
     }
 
+    /**
+     * View Reset Password Form
+     * @param $token
+     * @return Send to email Reset Password Link
+     */
     public function showResetPasswordForm($token)
     {
         return view('auth.forgetPasswordLink', ['token' => $token]);
     }
 
-    public function submitResetPasswordForm(Request $request)
+    /**
+     * Submit Reset Password Form
+     * @param ResetPasswordFormRequest $request
+     * @return Login Page
+     */
+    public function submitResetPasswordForm(ResetPasswordFormRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required'
-        ]);
-
         $updatePassword = DB::table('password_resets')
             ->where([
                 'email' => $request->email,

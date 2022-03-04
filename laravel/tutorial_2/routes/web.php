@@ -16,9 +16,9 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 */
 
 Route::get('login', 'Auth\AuthController@index')->name('login');
-Route::post('post-login', 'Auth\AuthController@postLogin')->name('login.post'); 
-Route::get('registration','Auth\AuthController@registration')->name('register');
-Route::post('post-registration', 'Auth\AuthController@postRegistration')->name('register.post'); 
+Route::post('post-login', 'Auth\AuthController@postLogin')->name('login.post');
+Route::get('registration', 'Auth\AuthController@registration')->name('register');
+Route::post('post-registration', 'Auth\AuthController@postRegistration')->name('register.post');
 Route::get('logout', 'Auth\AuthController@logout')->name('logout');
 
 
@@ -28,8 +28,8 @@ Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@showResetPas
 Route::post('reset-password', 'Auth\ForgotPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
 
-Route::get('/','Task\TaskController@index');
+Route::get('/', 'Task\TaskController@index');
 
-Route::post('/task','Task\TaskController@store');
+Route::post('/task', 'Task\TaskController@store');
 
-Route::delete('/task/{id}','Task\TaskController@destroy');
+Route::delete('/task/{id}', 'Task\TaskController@destroy');

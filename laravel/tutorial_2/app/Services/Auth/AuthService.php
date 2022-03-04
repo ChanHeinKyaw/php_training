@@ -10,26 +10,45 @@ use App\Contracts\Services\Auth\AuthServiceInterface;
 
 class AuthService implements AuthServiceInterface
 {
+    /**
+     * auth Dao
+     */
+    private $authDao;
 
-  private $authDao;
-
-  public function __construct(AuthDaoInterface $authDao)
-  {
-    $this->authDao = $authDao;
-  }
-
-  public function saveUser($request)
-  {
-    return $this->authDao->saveUser($request);
-  }
-
-  public function loginUser($request){
-    $credentials = $request->only('email', 'password');
-    if (Auth::attempt($credentials)) {
-      return redirect()->intended('/')
-                    ->withSuccess('You have Successfully loggedin');
-    }else{
-      return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+    /**
+     * Class Constructor
+     * @param AuthDaoInterface
+     * @return
+     */
+    public function __construct(AuthDaoInterface $authDao)
+    {
+        $this->authDao = $authDao;
     }
-  }
+
+    /**
+     * To Save User with values from request
+     * @param Request $request request including inputs
+     * @return Object created user object
+     */
+    public function saveUser($request)
+    {
+        return $this->authDao->saveUser($request);
+    }
+
+
+    /**
+     * To login with validated user.
+     * @param array $validated Validated fields from request
+     * @return array response body and status
+     */
+    public function loginUser($request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/')
+                ->withSuccess('You have Successfully loggedin');
+        } else {
+            return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        }
+    }
 }

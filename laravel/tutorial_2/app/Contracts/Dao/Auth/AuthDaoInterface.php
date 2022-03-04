@@ -6,5 +6,9 @@ namespace App\Contracts\Dao\Auth;
 
 interface AuthDaoInterface
 {
-  public function saveUser($request);
+    /**
+     * Create User With Input Value
+     * @param $request
+     */
+    public function saveUser($request);
 }

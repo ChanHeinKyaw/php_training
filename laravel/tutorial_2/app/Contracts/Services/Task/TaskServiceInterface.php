@@ -6,10 +6,21 @@ use Illuminate\Http\Request;
 
 interface TaskServiceInterface
 {
-  public function saveTask(Request $request);
+    /**
+     * Create Task
+     * @param $request
+     */
+    public function saveTask($request);
 
-  public function getTaskList();
+    /**
+     * Task Lisk
+     * @param $request
+     */
+    public function getTaskList();
 
-  public function deleteTaskById($id);
-
+    /**
+     * Delete Task By Id
+     * @param $request
+     */
+    public function deleteTaskById($id);
 }

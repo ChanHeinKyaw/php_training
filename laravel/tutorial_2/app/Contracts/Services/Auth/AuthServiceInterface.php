@@ -5,7 +5,15 @@ namespace App\Contracts\Services\Auth;
 
 interface AuthServiceInterface
 {
-  public function saveUser($request);
+    /**
+     * Create user
+     * @param $request
+     */
+    public function saveUser($request);
 
-  public function loginUser($request);
+    /**
+     * To Login User
+     * @param $request
+     */
+    public function loginUser($request);
 }

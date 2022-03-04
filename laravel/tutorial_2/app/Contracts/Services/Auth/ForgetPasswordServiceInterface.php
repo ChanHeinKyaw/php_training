@@ -5,7 +5,15 @@ namespace App\Contracts\Services\Auth;
 
 interface ForgetPasswordServiceInterface
 {
-  public function saveForgetPassword($request);
+    /**
+     * Save Forget Password And Email Sendgin
+     * @param $request
+     */
+    public function saveForgetPassword($request);
 
-  public function saveResetPassword($request);
+    /**
+     * Update Password
+     * @param $request
+     */
+    public function saveResetPassword($request);
 }
