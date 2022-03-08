@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Major;
 use App\Models\Student;
+use App\Exports\CsvExport;
+use App\Imports\CsvImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Contracts\Services\Student\StudentServiceInterface;
-use App\Exports\CsvExport;
-use App\Imports\CsvImport;
-use Maatwebsite\Excel\Facades\Excel;
 
 
 class StudentController extends Controller
@@ -104,5 +105,22 @@ class StudentController extends Controller
     */
     public function export(){
         return Excel::download(new CsvExport, 'sample.csv');
+    }
+
+    /*
+     * Search
+     * @param Request $request
+    */
+    public function search(Request $request){
+        $searchData = $request->search;
+        
+        $students = Student::where('name','like','%' . $searchData . '%')
+        ->orWhere('email','like','%' . $searchData . '%')
+        ->orWhere('phone','like','%' . $searchData . '%')
+        ->orWhereHas('major',function($major) use ($searchData){
+            $major->where('major','like','%' . $searchData . '%');
+        })
+        ->get();
+        return view('students.index',compact('students'));
     }
 }

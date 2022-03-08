@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="name" id="name" class="form-control" name="name" autofocus>
+          <input type="name" id="name" class="form-control" name="name" value="{{ old('name') }}">
           @if ($errors->has('name'))
             <span class="text-danger">{{ $errors->first('name') }}</span>
           @endif
@@ -20,7 +20,7 @@
 
         <div class="form-group">
           <label for="email_address">E-Mail Address</label>
-          <input type="email" id="email_address" class="form-control" name="email" autofocus>
+          <input type="email" id="email_address" class="form-control" name="email" value="{{ old('email') }}">
           @if ($errors->has('email'))
             <span class="text-danger">{{ $errors->first('email') }}</span>
           @endif
@@ -29,7 +29,7 @@
 
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="phone" id="phone" class="form-control" name="phone" autofocus>
+          <input type="phone" id="phone" class="form-control" name="phone" value="{{ old('phone') }}">
           @if ($errors->has('phone'))
             <span class="text-danger">{{ $errors->first('phone') }}</span>
           @endif

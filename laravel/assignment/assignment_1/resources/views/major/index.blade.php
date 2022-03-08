@@ -31,7 +31,7 @@
                 <form action="{{ url('major/' . $major->id . '/delete') }}" method="POST">
                   @csrf
                   <a href="{{ url('major/' . $major->id . '/edit') }}" class="btn btn-info btn-sm">Edit</a>
-                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
               </td>
             </tr>

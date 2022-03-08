@@ -15,7 +15,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-  {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+  {{--<link href="{{ elixir('css/app.css') }}" rel="stylesheet">--}}
 </head>
 
 <style>

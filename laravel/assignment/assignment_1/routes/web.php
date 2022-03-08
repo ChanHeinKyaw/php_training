@@ -38,6 +38,9 @@ Route::post('/delete/{id}', [StudentController::class, 'destroy'])->name('studen
 Route::post('/import', [StudentController::class, 'import'])->name('import');
 Route::get('/export', [StudentController::class, 'export'])->name('export');
 
+//Serach Data
+Route::get('/search_data',[StudentController::class,'search']);
+
 
 /*
   Major Route List

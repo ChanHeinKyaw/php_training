@@ -21,6 +21,13 @@
       </form>
       <br>
 
+      <form action="{{ url('/search_data') }}" method="GET">
+        @csrf
+          <input type="text" name="search">
+          <button class="btn btn-primary btn-sm">Search</button>
+      </form>
+      <br>
+
       <div>
         <a href="{{ route('major.index') }}" class="btn btn-primary btn-sm">Major List >> </a>
       </div>
@@ -48,7 +55,7 @@
                 <form action="{{ url('delete/' . $student->id . '') }}" method="POST">
                   @csrf
                   <a href="{{ url('edit/' . $student->id . '') }}" class="btn btn-info btn-sm">Edit</a>
-                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  <button type="submit" class="btn btn-danger btn-sm delete-btn" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
                 </form>
               </td>
             </tr>
