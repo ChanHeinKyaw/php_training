@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+//Student List Api Route
+Route::get('student',[ApiController::class,'index']);
+
+//Create Student Api Route
+Route::post('student',[ApiController::class,'store']);
+
+//Show Student By Id Api Route
+Route::get('student/{id}',[ApiController::class,'show']);
+
+//Update Student By Id Api Route
+Route::put('student/{id}',[ApiController::class,'update']);
+
+//Delete Student By Id Api Route
+Route::delete('student/{id}',[ApiController::class,'destroy']);
