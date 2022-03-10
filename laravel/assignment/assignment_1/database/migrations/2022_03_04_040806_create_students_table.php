@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->integer('major_id');
+            $table->integer('major_id')->nullable();
             $table->timestamps();
         });
     }

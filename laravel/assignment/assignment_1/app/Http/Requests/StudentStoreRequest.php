@@ -27,7 +27,6 @@ class StudentStoreRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'major' => 'required',
         ];
     }
 }

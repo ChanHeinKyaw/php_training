@@ -16,6 +16,8 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   {{--<link href="{{ elixir('css/app.css') }}" rel="stylesheet">--}}
+  <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </head>
 
 <style>
@@ -34,8 +36,6 @@
       </div>
     </div>
   </div>
-  <!-- JavaScripts -->
-  <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>

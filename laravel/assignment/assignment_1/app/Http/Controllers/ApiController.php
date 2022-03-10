@@ -2,20 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\StudentUpdateRequest;
-use App\Models\Student;
+use App\Contracts\Services\Student\StudentServiceInterface;
 
 class ApiController extends Controller
 {
+    /**
+     * Student Interface
+     */
+    private $studentInterface;
+
+    /**
+     * Create a new controller instance.
+     * @param StudentServiceInterface $studentServiceInterface
+     * @return void
+     */
+
+    public function __construct(StudentServiceInterface $studentServiceInterface)
+    {
+        $this->studentInterface = $studentServiceInterface;
+    }
     /*
      * View Student List
      * @param 
     */
     public function index()
     {
-        $students = Student::all();
-        return $students;
+        return $this->studentInterface->getStudentList();
     }
 
     /*
@@ -24,14 +39,7 @@ class ApiController extends Controller
     */
     public function store(StudentStoreRequest $request)
     {
-        $student = Student::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'major_id' => $request->major,
-        ]);
-
-        return $student;
+        $this->studentInterface->saveStudent($request);
     }
 
     /*
@@ -50,15 +58,7 @@ class ApiController extends Controller
     */
     public function update(StudentUpdateRequest $request, $id)
     {
-        $student = Student::find($id);
-        $student->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'major_id' => $request->major,
-        ]);
-
-        return $student;
+        $this->studentInterface->updateStudentById($request,$id);
     }
 
     /*
@@ -67,8 +67,6 @@ class ApiController extends Controller
     */
     public function destroy($id)
     {
-        $student = Student::find($id);
-        $student->delete();
-        return $student;
+        $this->studentInterface->deleteStudentById($id);
     }
 }

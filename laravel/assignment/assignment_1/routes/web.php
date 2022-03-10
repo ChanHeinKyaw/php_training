@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\StudentController;
@@ -59,4 +60,18 @@ Route::post('/major/{id}/edit', [MajorController::class, 'update'])->name('major
 
 //Major Delete
 Route::post('/major/{id}/delete', [MajorController::class, 'destroy'])->name('major.post-delete');
+
+
+
+/*
+  Api Call From Ajax Route
+*/
+
+//Student CRUD Route By Ajax
+Route::get('/ajax/student',function(){
+  return view("ajax.index");
+});
+
+
+
 
