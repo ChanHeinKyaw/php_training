@@ -24,7 +24,7 @@ class ApiController extends Controller
     {
         $this->studentInterface = $studentServiceInterface;
     }
-    /*
+    /**
      * View Student List
      * @param 
     */
@@ -33,7 +33,7 @@ class ApiController extends Controller
         return $this->studentInterface->getStudentList();
     }
 
-    /*
+    /**
      * Create Student 
      * @param 
     */
@@ -42,7 +42,7 @@ class ApiController extends Controller
         $this->studentInterface->saveStudent($request);
     }
 
-    /*
+    /**
      * Get Student By Id
      * @param $id
     */
@@ -52,7 +52,7 @@ class ApiController extends Controller
         return $student;
     }
 
-    /*
+    /**
      * Update Student By Id
      * @param StudentUpdateRequest,$request,$id
     */
@@ -61,7 +61,7 @@ class ApiController extends Controller
         $this->studentInterface->updateStudentById($request,$id);
     }
 
-    /*
+    /**
      * Delete Student By Id
      * @param $id
     */

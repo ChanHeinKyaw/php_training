@@ -5,6 +5,7 @@ namespace App\Dao\Student;
 
 use App\Models\Student;
 use App\Contracts\Dao\Student\StudentDaoInterface;
+use Illuminate\Support\Facades\Mail;
 
 class StudentDao implements StudentDaoInterface
 {

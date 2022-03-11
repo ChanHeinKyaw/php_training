@@ -42,7 +42,7 @@ class MajorController extends Controller
         return view('major.create');
     }
 
-    /*
+    /**
      * Store Major With Input Value From Request
      * @param MajorStoreRequest $request
     */
@@ -52,7 +52,7 @@ class MajorController extends Controller
         return redirect('/major')->with('success', 'Successfully Created!');
     }
 
-    /*
+    /**
      * View Edit Page
      * @param $id
     */
@@ -62,7 +62,7 @@ class MajorController extends Controller
         return view('major.edit', compact('major'));
     }
 
-    /*
+    /**
      * Update Major
      * @param MajorUpdateRequest $request $id
     */
@@ -72,7 +72,7 @@ class MajorController extends Controller
         return redirect('/major')->with('success', 'Successfully Updated!');
     }
 
-    /*
+    /**
      * Delete Major
      * @param $id
     */

@@ -2,13 +2,12 @@
 
 namespace App\Services\Student;
 
-use App\Exports\CsvExport;
-use App\Imports\CsvImport;
+use App\Mail\SendMail;
+use App\Mail\DeleteMail;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Mail;
 use App\Contracts\Dao\Student\StudentDaoInterface;
 use App\Contracts\Services\Student\StudentServiceInterface;
-
 
 class StudentService implements StudentServiceInterface
 {
@@ -34,7 +33,15 @@ class StudentService implements StudentServiceInterface
      */
     public function saveStudent($request)
     {
-        return $this->studentDao->saveStudent($request);
+       $this->studentDao->saveStudent($request);
+
+       $sendMail = [
+           "title" => "Student Account Created",
+           "body"  => "Welcome To Our School",
+       ];
+
+       Mail::to("chanheinkyaw.mm@gmail.com")->send(new SendMail($sendMail));
+
     }
 
     /**
@@ -63,6 +70,13 @@ class StudentService implements StudentServiceInterface
      */
     public function deleteStudentById($id)
     {
-        return $this->studentDao->deleteStudentById($id);
+        $this->studentDao->deleteStudentById($id);
+
+        $deleteMail = [
+            "title" => "Student Account Delete",
+            "body"  => "Bye Bye From Our School",
+        ];
+ 
+        Mail::to("chanheinkyaw.mm@gmail.com")->send(new DeleteMail($deleteMail));
     }
 }

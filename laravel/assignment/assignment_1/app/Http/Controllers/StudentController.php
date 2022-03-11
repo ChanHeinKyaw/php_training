@@ -48,17 +48,17 @@ class StudentController extends Controller
         return view("students.create", compact('majors'));
     }
 
-    /*
+    /**
      * Store Student With Input Value From Request
      * @param StudentStoreRequest $request
     */
     public function store(StudentStoreRequest $request)
     {
         $this->studentInterface->saveStudent($request);
-        return redirect('/')->with('success', 'Successfully Created!');
+        return redirect('/')->with('success', 'Successfully Created!Check Your Mail');
     }
 
-    /*
+    /**
      * View Edit Page
      * @param $id
     */
@@ -69,7 +69,7 @@ class StudentController extends Controller
         return view("students.edit", compact('student', 'majors'));
     }
 
-    /*
+    /**
      * Update Student
      * @param StudentUpdateRequest $request $id
     */
@@ -80,17 +80,17 @@ class StudentController extends Controller
     }
 
 
-    /*
+    /**
      * Delete Student
      * @param $id
     */
     public function destroy($id)
     {
         $this->studentInterface->deleteStudentById($id);
-        return redirect('/')->with('success', 'Successfully Deleted!');
+        return redirect('/')->with('success', 'Successfully Deleted!Check Your Mail');
     }
 
-    /*
+    /**
      * CSV Import
      * @param 
     */
@@ -99,7 +99,7 @@ class StudentController extends Controller
         return back();
     }
 
-    /*
+    /**
      * CSV Export
      * @param 
     */
@@ -107,7 +107,7 @@ class StudentController extends Controller
         return Excel::download(new CsvExport, 'sample.csv');
     }
 
-    /*
+    /**
      * Search
      * @param Request $request
     */
