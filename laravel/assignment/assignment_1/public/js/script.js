@@ -36,19 +36,29 @@ function createStudentData() {
   objectStudent.name = $('.name').val();
   objectStudent.email = $('.email').val();
   objectStudent.phone = $('.phone').val();
-  if (objectStudent) {
+
+  if (objectStudent.name == "") {
+    document.getElementById("nameField").innerHTML = "Name Field Is Required";
+  }
+
+  if (objectStudent.email == "") {
+    document.getElementById("emailField").innerHTML = "Email Field Is Required";
+  }
+
+  if (objectStudent.phone == "") {
+    document.getElementById("phoneField").innerHTML = "Phone Field Is Required";
+  }
+
+  if (objectStudent.name != "" && objectStudent.email != "" && objectStudent.phone != "") {
     $.ajax({
       url: "http://127.0.0.1:8000/api/student",
       type: "POST",
       dataType: "json",
       contentType: "application/json",
       data: JSON.stringify(objectStudent),
-      success: function (res) {
-        alert("Student Added");
-        window.location.reload();
-        clear();
-      },
     });
+    alert("Student Added");
+    window.location.reload();
   }
 }
 
@@ -65,10 +75,10 @@ function deleteStudentData(id) {
     type: "DELETE",
     dataType: "json",
     contentType: "application/json",
-    success: function (result) {
-      getStudentData();
-    },
   })
+  alert("Are You Sure You Want To Delete?");
+  window.location.reload();
+
 }
 
 
@@ -97,18 +107,29 @@ function updateStudentData() {
   objectStudent.name = $('.name').val();
   objectStudent.email = $('.email').val();
   objectStudent.phone = $('.phone').val();
-  console.log(objectStudent);
-  $.ajax({
-    url: "http://127.0.0.1:8000/api/student/" + id,
-    type: "PUT",
-    dataType: "json",
-    contentType: "application/json",
-    data: JSON.stringify(objectStudent),
-    success: function (result) {
-      alert("Student Updated");
-      window.location.reload();
-      clear();
-    },
-  })
+
+  if (objectStudent.name == "") {
+    document.getElementById("nameField").innerHTML = "Name Field Is Required";
+  }
+
+  if (objectStudent.email == "") {
+    document.getElementById("emailField").innerHTML = "Email Field Is Required";
+  }
+
+  if (objectStudent.phone == "") {
+    document.getElementById("phoneField").innerHTML = "Phone Field Is Required";
+  }
+
+  if (objectStudent.name != "" && objectStudent.email != "" && objectStudent.phone != "") {
+    $.ajax({
+      url: "http://127.0.0.1:8000/api/student/" + id,
+      type: "PUT",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(objectStudent),
+    })
+    alert("Student Uploaded");
+    window.location.reload();
+  }
 }
 

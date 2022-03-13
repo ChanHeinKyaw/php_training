@@ -40,7 +40,7 @@ class StudentDao implements StudentDaoInterface
      * @param $request,$id
      * @return 
      */
-    public function updateStudentById($request,$id)
+    public function updateStudentById($request, $id)
     {
         $student = Student::findOrFail($id);
         $student->update([

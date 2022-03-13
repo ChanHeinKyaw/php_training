@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Exports\CsvExport;
 use App\Imports\CsvImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\StudentUpdateRequest;
@@ -113,14 +114,14 @@ class StudentController extends Controller
     */
     public function search(Request $request){
         $searchData = $request->search;
-        
-        $students = Student::where('name','like','%' . $searchData . '%')
-        ->orWhere('email','like','%' . $searchData . '%')
-        ->orWhere('phone','like','%' . $searchData . '%')
-        ->orWhereHas('major',function($major) use ($searchData){
-            $major->where('major','like','%' . $searchData . '%');
-        })
+
+        $students = DB::table('students')
+        ->select(DB::raw('id,name, email, phone , major_id as major'))
+        ->where('name', 'LIKE', "%$searchData%")
+        ->orwhere('email', 'LIKE', "%$searchData%")
+        ->orWhere('phone', 'LIKE', "%$searchData%")
         ->get();
+        
         return view('students.index',compact('students'));
     }
 }

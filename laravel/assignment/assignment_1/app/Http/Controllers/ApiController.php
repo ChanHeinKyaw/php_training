@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Contracts\Services\Student\StudentServiceInterface;
+use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class ApiController extends Controller
 {
@@ -27,7 +28,7 @@ class ApiController extends Controller
     /**
      * View Student List
      * @param 
-    */
+     */
     public function index()
     {
         return $this->studentInterface->getStudentList();
@@ -36,7 +37,7 @@ class ApiController extends Controller
     /**
      * Create Student 
      * @param 
-    */
+     */
     public function store(StudentStoreRequest $request)
     {
         $this->studentInterface->saveStudent($request);
@@ -45,7 +46,7 @@ class ApiController extends Controller
     /**
      * Get Student By Id
      * @param $id
-    */
+     */
     public function show($id)
     {
         $student = Student::find($id);
@@ -55,18 +56,21 @@ class ApiController extends Controller
     /**
      * Update Student By Id
      * @param StudentUpdateRequest,$request,$id
-    */
+     */
     public function update(StudentUpdateRequest $request, $id)
     {
-        $this->studentInterface->updateStudentById($request,$id);
+        $this->studentInterface->updateStudentById($request, $id);
     }
 
     /**
      * Delete Student By Id
      * @param $id
-    */
+     */
     public function destroy($id)
     {
-        $this->studentInterface->deleteStudentById($id);
+        //$this->studentInterface->deleteStudentById($id);
+        $student = Student::find($id);
+        $student->delete();
+        return $student;
     }
 }

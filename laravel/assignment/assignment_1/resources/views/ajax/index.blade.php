@@ -7,25 +7,20 @@
       <div class="form-group">
         <label for="name">Name</label>
         <input type="name" id="name" class="form-control name" name="name" value="{{ old('name') }}">
-        @if ($errors->has('name'))
-          <span class="text-danger">{{ $errors->first('name') }}</span>
-        @endif
+        <span id="nameField" class="text-danger"></span>
       </div>
 
       <div class="form-group">
         <label for="email_address">E-Mail Address</label>
         <input type="email" id="email_address" class="form-control email" name="email" value="{{ old('email') }}">
-        @if ($errors->has('email'))
-          <span class="text-danger">{{ $errors->first('email') }}</span>
-        @endif
+        <span id="emailField" class="text-danger"></span>
       </div>
+
 
       <div class="form-group">
         <label for="phone">Phone</label>
         <input type="phone" id="phone" class="form-control phone" name="phone" value="{{ old('phone') }}">
-        @if ($errors->has('phone'))
-          <span class="text-danger">{{ $errors->first('phone') }}</span>
-        @endif
+        <span id="phoneField" class="text-danger"></span>
       </div>
 
     </div>
